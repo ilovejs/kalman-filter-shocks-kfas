@@ -1,3 +1,9 @@
+[Home](https://mgcodesandstats.github.io/) |
+[Time Series Consulting](https://mgcodesandstats.github.io/timeseriesconsulting/) |
+[Portfolio](https://mgcodesandstats.github.io/portfolio/) |
+[Terms and Conditions](https://mgcodesandstats.github.io/terms/) |
+[E-mail me](mailto:michael@michaeljgrogan.com)
+
 When it comes to time series forecasts, conventional models such as ARIMA are often a popular option. While these models can prove to have high degrees of accuracy, they have one major shortcoming – they do not typically account for “shocks”, or sudden changes in a time series. Let’s see how we can potentially alleviate this problem using a model known as the Kalman Filter.
 
 Time Series Shocks
