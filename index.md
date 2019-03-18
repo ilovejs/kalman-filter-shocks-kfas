@@ -14,7 +14,7 @@ Let’s see how the Kalman Filter adjusts for such a shock.
 Kalman Filter with KFAS library: USD/CHF
 
 Firstly, let’s download data for USD/CHF for the month of January 2015:
-
+```
 > require(Quandl)
 Loading required package: Quandl
 Loading required package: xts
@@ -29,11 +29,11 @@ The following objects are masked from ‘package:base’:
 > currency = Quandl("FRED/DEXSZUS", start_date="2010-01-01",end_date="2018-09-29",type="xts")
 > currency=data.frame(currency)
 > currency=(log(currency$currency))
-
+```
 We are converting the currency data into a data frame, and then converting into log format to structure our time series in terms of returns.
 
 Now, we will attempt to model this time series with the Kalman Filter using the KFAS library.
-
+```
 > #Kalman Filter
 > library(KFAS)
 Warning message:
@@ -42,7 +42,7 @@ package ‘KFAS’ was built under R version 3.5.1
 > out <- KFS(logmodel)
 > ts.plot(ts(exp(currency[1232:1274]), exp(out$a[1232:1274]), exp(out$att[1232:1274]), exp(out$alpha[1232:1274])
 > title("USD/CHF")
-
+```
 Let’s go through the above.
 
 SSModel denotes “state space model”, and observe that we are regressing the USD/CHF time series against the SSMtrend, which denotes our smoothed estimates, or state predictions one-step ahead of that of the actual series.
@@ -60,21 +60,21 @@ We can see that our a, att, and alpha series are adjusting to the shock instanta
     alphahat: Smoothed estimates of states
 
 For comparison purposes, we will also compute a 10-day moving average to compare smoothing performance with that of the Kalman Filter.
-
+```
 library(TTR)
 sma10=data.frame(SMA(exp(currency),n=10))
 col_headings<-c("sma10")
 names(sma10)<-col_headings
 View(sma10)
-
+```
 Let’s now combine the above into a data frame along with our original series and see what we come up with:
-
+```
 > df<-data.frame(exp(currency[1232:1274]), exp(out$a[1232:1274]), exp(out$att[1232:1274]), exp(out$alpha[1232:1274]),sma10$sma10[1232:1274])
 > View(df)
 > col_headings<-c("currency","a","att","alpha","sma10")
 > names(df)<-col_headings
 > View(df)
-
+```
 Here is the data frame generated:
 
 usdchf
@@ -93,7 +93,7 @@ So, we’ve seen how the Kalman Filter adjusted to the sudden movement in the US
 How well would the Kalman Filter have modelled this? Let’s find out!
 
 As in the example of USD/CHF, we download our GBP/USD data from Quandl and run the Kalman Filter:
-
+```
 require(Quandl)
 library(KFAS)
 
@@ -111,7 +111,7 @@ names(df)<-col_headings
 View(df)
 ts.plot(ts(exp(currency[100:150])), exp(out$a[100:150]), exp(out$att[100:150]), exp(out$alpha[100:150]), col = 1:4)
 title("GBP/USD")
-
+```
 Here is a plot of our data. Again, we see that alpha adjusts downwards to a level of 1.438 one day before the shock at t=22:
 
 gbpusd kalman filter
@@ -121,6 +121,7 @@ Here are the a, att, and alpha statistics:
 a att alpha
 
 Again, we see that the 10-day SMA takes nearly 10 days to adjust fully for the shock, indicating once again that the smoothing parameter alpha has still proven superior in adjusting for the large change in the currency level.
+
 Conclusion
 
 Here, it has been illustrated:
