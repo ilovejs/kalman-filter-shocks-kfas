@@ -57,7 +57,7 @@ Q and H denote our unconstrained time-invariant covariance estimates. The steps 
 
 When we plot our time series, here is what we come up with:
 
-kalman filter
+![usd-chf](usdchf-plot.png)
 
 We can see that our a, att, and alpha series are adjusting to the shock instantaneously.
 
@@ -83,7 +83,7 @@ Let’s now combine the above into a data frame along with our original series a
 ```
 Here is the data frame generated:
 
-usdchf
+![usdchf-table](usdchf-table-1.png)
 
 As elaborated in this post on Quora, there are some instances in which high-frequency data – or filtering to extract information from a noisy signal and predict the future state, is the most appropriate use of the Kalman Filter. On the other hand, smoothing relies more on past data, since there are some instances where averaging recent measurements may prove more accurate than using the most recent one.
 
@@ -120,11 +120,11 @@ title("GBP/USD")
 ```
 Here is a plot of our data. Again, we see that alpha adjusts downwards to a level of 1.438 one day before the shock at t=22:
 
-gbpusd kalman filter
+![gbpusd-chart](gbpusd-chart.png)
 
 Here are the a, att, and alpha statistics:
 
-a att alpha
+![gbpusd-table](gbpusd-table.png)
 
 Again, we see that the 10-day SMA takes nearly 10 days to adjust fully for the shock, indicating once again that the smoothing parameter alpha has still proven superior in adjusting for the large change in the currency level.
 
