@@ -65,9 +65,9 @@ When we plot our time series, here is what we come up with:
 
 We can see that our a, att, and alpha series are adjusting to the shock instantaneously.
 
-    a: One-step-ahead predictions of states
-    att: Filtered estimates of states
-    alphahat: Smoothed estimates of states
+- a: One-step-ahead predictions of states
+- att: Filtered estimates of states
+- alphahat: Smoothed estimates of states
 
 For comparison purposes, we will also compute a 10-day moving average to compare smoothing performance with that of the Kalman Filter.
 ```
@@ -89,7 +89,7 @@ Here is the data frame generated:
 
 ![usdchf-table](usdchf-table-1.png)
 
-As elaborated in this post on Quora, there are some instances in which high-frequency data – or filtering to extract information from a noisy signal and predict the future state, is the most appropriate use of the Kalman Filter. On the other hand, smoothing relies more on past data, since there are some instances where averaging recent measurements may prove more accurate than using the most recent one.
+As elaborated in this post on [Quora](http://www.quora.com/What-is-the-difference-between-filtering-and-smoothing-in-state-estimation), there are some instances in which high-frequency data – or filtering to extract information from a noisy signal and predict the future state, is the most appropriate use of the Kalman Filter. On the other hand, smoothing relies more on past data, since there are some instances where averaging recent measurements may prove more accurate than using the most recent one.
 
 In this particular instance, we can see that at time period 31 (which was one day before the sharp fall in the USD/CHF), the value of alpha (the smoothing estimate of state) dropped significantly from 1.002 to 0.97, and then down to 0.915 on the day of the actual shock.
 
