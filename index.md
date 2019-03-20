@@ -4,9 +4,11 @@
 [Terms and Conditions](https://mgcodesandstats.github.io/terms/) |
 [E-mail me](mailto:michael@michaeljgrogan.com)
 
+# Kalman Filter: Modelling Time Series Shocks with KFAS
+
 When it comes to time series forecasts, conventional models such as ARIMA are often a popular option. While these models can prove to have high degrees of accuracy, they have one major shortcoming – they do not typically account for “shocks”, or sudden changes in a time series. Let’s see how we can potentially alleviate this problem using a model known as the Kalman Filter.
 
-Time Series Shocks
+## Time Series Shocks
 
 Let’s take the currency market as an example. An currency pair could have an overall upward trend, and then spike sharply downwards during a sell-off. A conventional time series model wouldn’t necessarily account for this right away, and it would likely take several periods into the future before the sudden change in trend would be taken into account.
 
@@ -17,7 +19,8 @@ The Kalman Filter is a state-space model that adjusts more quickly for shocks to
 In January 2015, currency markets underwent one of the biggest shocks ever endured, when the Swiss National Bank decided to depeg the Swiss franc from the euro. As a result, the Swiss franc soared in value while other major currencies plummeted.
 
 Let’s see how the Kalman Filter adjusts for such a shock.
-Kalman Filter with KFAS library: USD/CHF
+
+## Kalman Filter with KFAS library: USD/CHF
 
 Firstly, let’s download data for USD/CHF for the month of January 2015:
 ```
@@ -92,7 +95,8 @@ In this particular instance, we can see that at time period 31 (which was one da
 This makes sense intuitively, as the currency was trading at a level of 0.9658 roughly one month prior. In this regard, the smoothing estimator allowed for a better prediction of the signal than using the filtering estimate a, which did not adjust for the shock until time period 33.
 
 Additionally, notice that a 10-day SMA is also being used. Even though alpha is being used as a smoother, we see that alpha still adjusted for the shock much quicker than the simple moving average – meaning that the Kalman Filter has given a better prediction than simply using a basic smoothing technique.
-Another Example: GBP/USD
+
+## Another Example: GBP/USD
 
 So, we’ve seen how the Kalman Filter adjusted to the sudden movement in the USD/CHF. Let’s take another example of a currency shock. When Britain voted for “Brexit” in June 2016, we saw the GBP/USD subsequently plunge.
 
@@ -128,7 +132,7 @@ Here are the a, att, and alpha statistics:
 
 Again, we see that the 10-day SMA takes nearly 10 days to adjust fully for the shock, indicating once again that the smoothing parameter alpha has still proven superior in adjusting for the large change in the currency level.
 
-Conclusion
+##Conclusion
 
 Here, it has been illustrated:
 
