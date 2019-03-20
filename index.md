@@ -136,7 +136,7 @@ Again, we see that the 10-day SMA takes nearly 10 days to adjust fully for the s
 
 Here, it has been illustrated:
 
-    The importance of adjusting for time series shocks
-    How to implement a Kalman Filter using KFAS in R
-    How to interpret output from a Kalman Filter
-    Why the Kalman Filter is a suitable model for modelling time-series shocks
+- The importance of adjusting for time series shocks
+- How to implement a Kalman Filter using KFAS in R
+- How to interpret output from a Kalman Filter
+- Why the Kalman Filter is a suitable model for modelling time-series shocks
