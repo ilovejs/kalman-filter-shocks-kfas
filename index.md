@@ -132,7 +132,7 @@ Here are the a, att, and alpha statistics:
 
 Again, we see that the 10-day SMA takes nearly 10 days to adjust fully for the shock, indicating once again that the smoothing parameter alpha has still proven superior in adjusting for the large change in the currency level.
 
-##Conclusion
+## Conclusion
 
 Here, it has been illustrated:
 
